@@ -29,15 +29,8 @@ def constroiArrayDistancias(array):
                 distanciaEspecies = []
         todasDistancias.append(distancias)
         distancias = []
-
-    # print len(todasDistancias)
-    # print len(todasDistancias[0])
-    # print len(todasDistancias[0][0])
-    # print todasDistancias[0][0]
-    # print todasDistancias[0]
     return todasDistancias
-def retornaNumero(item):
-    return item[2]
+
 # array = todasDistancias
 def KNN(kvizinhos,array):
     acertos=0
@@ -50,9 +43,8 @@ def KNN(kvizinhos,array):
             vizinhos.append(x[y])
             if vizinhos[y][0]==vizinhos[y][1]:
                 acertos +=1
-            soma += kvizinhos
-    print soma
+        soma += kvizinhos
     print acertos
-
+    print soma
     return (float)(acertos*100)/soma
 
