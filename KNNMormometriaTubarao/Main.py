@@ -22,11 +22,12 @@ def constroiArrayDistancias(array):
                 for x in range(len(especiePrincipal)):
                     if x>3:
                         distancia += distEuclidianaMetade(especieCompara[x], especiePrincipal[x])
-                distanciaEspecies.append(especiePrincipal[0])
-                distanciaEspecies.append(especieCompara[0])
-                distanciaEspecies.append(math.sqrt(distancia))
-                distancias.append(distanciaEspecies)#distEsp = array de 3 elementos
-                distanciaEspecies = []
+                if distancia > 0:
+                    distanciaEspecies.append(especiePrincipal[0])
+                    distanciaEspecies.append(especieCompara[0])
+                    distanciaEspecies.append(math.sqrt(distancia))
+                    distancias.append(distanciaEspecies)#distEsp = array de 3 elementos
+                    distanciaEspecies = []
         todasDistancias.append(distancias)
         distancias = []
     return todasDistancias
@@ -39,12 +40,15 @@ def KNN(kvizinhos,array):
         vizinhos = []
         # x 50 especies com 3 elementos especie 1, especie2, distancia entre eles
         x.sort(key = lambda tup:tup[2])
+        # print len(x)
         for y in range(kvizinhos):
             vizinhos.append(x[y])
-            if vizinhos[y][0]==vizinhos[y][1]:
+            if vizinhos[y][0] == vizinhos[y][1]:
                 acertos +=1
         soma += kvizinhos
     print acertos
     print soma
     return (float)(acertos*100)/soma
-
+for x in range(6):
+    k = x+1
+    print KNN(k,constroiArrayDistancias(data[0]))
