@@ -1,8 +1,9 @@
 from scipy.io import arff
 import math
-from operator import itemgetter,methodcaller,attrgetter
+
 
 data = arff.loadarff("data.arff")
+
 
 def distEuclidianaMetade(valor1,valor2):
     return pow((valor1-valor2),2)
@@ -46,9 +47,9 @@ def KNN(kvizinhos,array):
             if vizinhos[y][0] == vizinhos[y][1]:
                 acertos +=1
         soma += kvizinhos
-    print acertos
-    print soma
+    print(acertos)
+    print(soma)
     return (float)(acertos*100)/soma
 for x in range(6):
     k = x+1
-    print KNN(k,constroiArrayDistancias(data[0]))
+    print(KNN(k,constroiArrayDistancias(data[0])))
